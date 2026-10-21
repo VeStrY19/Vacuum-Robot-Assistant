@@ -1,12 +1,18 @@
 # -*- coding: utf-8 -*-
 import json
 import sys
+import os
 import io
 
 def validate_project():
-    file_path = r"..\ephemeris_project_Test_req_10_21_2026, 11_32_33 AM.json"
+    # Détermine le dossier racine du projet (le parent du dossier 'scripts')
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    root_dir = os.path.dirname(current_dir)
+    
+    # Chemin vers le fichier JSON à la racine
+    file_path = os.path.join(root_dir, "ephemeris_project_Test_req_10_21_2026, 11_32_33 AM.json")
+    
     try:
-        # io.open gère l'encodage de manière compatible Python 2 et Python 3
         with io.open(file_path, "r", encoding="utf-8") as f:
             data = json.load(f)
         
